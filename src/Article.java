@@ -4,8 +4,11 @@ import java.util.ArrayList;
  * Created by kreska on 07.12.16.
  */
 public class Article {
-    public int numOfArticle;
-    public String content;
+    private String content;
+
+    public Article(String content) {
+        this.content = content;
+    }
 
     @Override
     public String toString() {
