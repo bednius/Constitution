@@ -1,5 +1,3 @@
-import sun.awt.image.ImageWatched;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
@@ -72,13 +70,6 @@ public class Parser {
         removeTrash();
         mergeSeparatedSentences();
         removePreamble();
-    }
-
-    public void toStr() {
-        ListIterator<String> iterator = lines.listIterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
     }
 
     public LinkedList<String> returnList () {

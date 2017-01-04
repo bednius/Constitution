@@ -11,12 +11,6 @@ public class WordsMatcher {
     public static final Pattern title = Pattern.compile("[A-Z ŻĆŹÓĘĄŁ]{4,}.+");
     public static final Pattern trash = Pattern.compile("[A-Za-z0-9]");
     public static final Pattern trash2 = Pattern.compile("[©].+");
-    //static final Pattern title = Pattern.compile("KONSTYTUCJA");
-    //static final Pattern exception = Pattern.compile("Tracą moc:");
-
-    //static Matcher matcher;
-
-    //WordsMatcher() {}
 
     public TypesOfLine detectType(String line) {
 

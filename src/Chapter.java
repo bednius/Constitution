@@ -8,7 +8,6 @@ public class Chapter {
     private String title;
     private int begin;
     private int end;
-    //private LinkedList<Article> articles = new LinkedList<>();
 
     public void setTitle(String title) {
         this.title = title;
