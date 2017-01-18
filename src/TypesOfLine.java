@@ -7,5 +7,5 @@ public enum TypesOfLine {
     Trash,
     Separated,
     CapitalLetters,
-    Default;
+    Default
 }

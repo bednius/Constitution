@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -16,10 +18,16 @@ public class Parser {
         this.file = new FileReader(path);
     }
 
-    private void moveContentToList() {
-        Scanner scanner = new Scanner(file);
-        while (scanner.hasNextLine()) {
-            lines.add(scanner.nextLine());
+    private void moveContentToList() throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(file);
+        String textLine = bufferedReader.readLine();
+        try {
+            do {
+                lines.add(textLine);
+                textLine = bufferedReader.readLine();
+            } while (textLine != null);
+        } finally {
+            bufferedReader.close();
         }
     }
 
@@ -66,7 +74,11 @@ public class Parser {
     }
 
     public void parse() {
-        moveContentToList();
+        try {
+            moveContentToList();
+        } catch (IOException e) {
+            System.err.println("Cannot read file. Unknown error");
+        }
         removeTrash();
         mergeSeparatedSentences();
         removePreamble();
