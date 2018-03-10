@@ -15,7 +15,7 @@ public class Builder {
     public Constitution build() {
         Constitution constitution = new Constitution();
         int numberOfArticles = 0;
-        int i = 0; // actualPosition;
+        int i = 0; // current position
         Chapter chapter = new Chapter();
         chapter.setBegin(0);
         chapter.setTitle(lines.get(i) + "\n" + lines.get(i + 1));
@@ -30,18 +30,18 @@ public class Builder {
                 chapter.setTitle(lines.get(i) + "\n" + lines.get(i + 1));
                 i++;
             } else if (WordsMatcher.article.matcher(lines.get(i)).matches() || WordsMatcher.title.matcher(lines.get(i)).matches()) {
-                String article = lines.get(i) + "\n";
+                StringBuilder article = new StringBuilder(lines.get(i) + "\n");
                 if (WordsMatcher.title.matcher(lines.get(i)).matches()) {
                     i++;
-                    article += lines.get(i) + "\n";
+                    article.append(lines.get(i)).append("\n");
                 }
                 i++;
                 while (i < lines.size() && WordsMatcher.isContentArticle(lines.get(i))) {
-                    article += lines.get(i) + "\n";
+                    article.append(lines.get(i)).append("\n");
                     i++;
                 }
                 i--;
-                constitution.addArticle(article);
+                constitution.addArticle(article.toString());
                 numberOfArticles++;
             }
             i++;

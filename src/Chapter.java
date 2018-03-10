@@ -12,9 +12,11 @@ public class Chapter {
     public void setTitle(String title) {
         this.title = title;
     }
+
     public void setBegin(int begin) {
         this.begin = begin;
     }
+
     public void setEnd(int end) {
         this.end = end;
     }

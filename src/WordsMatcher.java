@@ -12,27 +12,27 @@ public class WordsMatcher {
     public static final Pattern trash = Pattern.compile("[A-Za-z0-9]");
     public static final Pattern trash2 = Pattern.compile("[©].+");
 
-    public TypesOfLine detectType(String line) {
+    public LineType detectType(String line) {
 
-        if(chapter.matcher(line).matches())
-            return TypesOfLine.Chapter;
+        if (chapter.matcher(line).matches())
+            return LineType.Chapter;
 
-        if(article.matcher(line).matches())
-            return TypesOfLine.Article;
+        if (article.matcher(line).matches())
+            return LineType.Article;
 
-        if(separated.matcher(line).matches())
-            return TypesOfLine.Separated;
+        if (separated.matcher(line).matches())
+            return LineType.Separated;
 
-        if(title.matcher(line).matches())
-            return TypesOfLine.CapitalLetters;
+        if (title.matcher(line).matches())
+            return LineType.CapitalLetters;
 
-        if(trash.matcher(line).matches() || trash2.matcher(line).matches() || date.matcher(line).matches())
-            return TypesOfLine.Trash;
+        if (trash.matcher(line).matches() || trash2.matcher(line).matches() || date.matcher(line).matches())
+            return LineType.Trash;
 
-        return TypesOfLine.Default;
+        return LineType.Default;
     }
 
-    public static boolean isContentArticle (String line) {
+    public static boolean isContentArticle(String line) {
         return (!chapter.matcher(line).matches() && !article.matcher(line).matches() && !title.matcher(line).matches());
     }
 }

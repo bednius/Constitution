@@ -28,11 +28,11 @@ public class Constitution {
     }
 
     public String toStringArticles(int begin, int end) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = begin - 1; i < end; i++) {
-            result += articles.get(i).toString();
+            result.append(articles.get(i).toString());
         }
-        return result;
+        return result.toString();
     }
 
     public String toStringChapter(int chapterNo) {

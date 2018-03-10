@@ -1,7 +1,7 @@
 /**
  * Created by kreska on 02.01.17.
  */
-public enum TypesOfLine {
+public enum LineType {
     Chapter,
     Article,
     Trash,

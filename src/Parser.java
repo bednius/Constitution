@@ -10,7 +10,7 @@ import java.util.*;
 public class Parser {
     private String path;
     private LinkedList<String> lines = new LinkedList<>();
-    public FileReader file;
+    private FileReader file;
     private WordsMatcher wordsMatcher = new WordsMatcher();
 
     public Parser(String path) throws FileNotFoundException {
@@ -34,29 +34,29 @@ public class Parser {
     private void removeTrash() {
         ListIterator<String> iterator = lines.listIterator();
         while (iterator.hasNext()) {
-            if (wordsMatcher.detectType(iterator.next()).equals(TypesOfLine.Trash))
+            if (wordsMatcher.detectType(iterator.next()).equals(LineType.Trash))
                 iterator.remove();
         }
     }
 
     private void mergeSeparatedSentences() {
         for (int i = 0; i < lines.size(); i++) {
-            if (wordsMatcher.detectType(lines.get(i)).equals(TypesOfLine.Separated)) {
+            if (wordsMatcher.detectType(lines.get(i)).equals(LineType.Separated)) {
                 String[] upperLine = lines.get(i).split("\\s+");
                 String[] lowerLine = lines.get(i + 1).split("\\s+");
                 String mergedWord = mergeTwoWords(upperLine[upperLine.length - 1], lowerLine[0]);
                 upperLine[upperLine.length - 1] = mergedWord;
-                String result = "";
+                StringBuilder result = new StringBuilder();
                 for (int j = 0; j < upperLine.length - 1; j++)
-                    result += upperLine[j] + " ";
-                result += upperLine[upperLine.length - 1];
-                lines.set(i, result);
-                result = "";
+                    result.append(upperLine[j]).append(" ");
+                result.append(upperLine[upperLine.length - 1]);
+                lines.set(i, result.toString());
+                result = new StringBuilder();
                 if (lowerLine.length > 1) {
                     for (int j = 1; j < lowerLine.length - 1; j++)
-                        result += lowerLine[j] + " ";
-                    result += lowerLine[lowerLine.length - 1];
-                    lines.set(i + 1, result);
+                        result.append(lowerLine[j]).append(" ");
+                    result.append(lowerLine[lowerLine.length - 1]);
+                    lines.set(i + 1, result.toString());
                 } else
                     lines.remove(i + 1);
             }
@@ -69,7 +69,7 @@ public class Parser {
 
     private void removePreamble() {
         ListIterator<String> iterator = lines.listIterator();
-        while (!wordsMatcher.detectType(iterator.next()).equals(TypesOfLine.Chapter))
+        while (!wordsMatcher.detectType(iterator.next()).equals(LineType.Chapter))
             iterator.remove();
     }
 
@@ -84,7 +84,7 @@ public class Parser {
         removePreamble();
     }
 
-    public LinkedList<String> returnList () {
+    public LinkedList<String> returnList() {
         return this.lines;
     }
 }
