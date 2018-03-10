@@ -620,7 +620,7 @@
       <workItem from="1488325431856" duration="600000" />
       <workItem from="1492873888959" duration="382000" />
       <workItem from="1492875390253" duration="56000" />
-      <workItem from="1520640111026" duration="2694000" />
+      <workItem from="1520640111026" duration="2760000" />
     </task>
     <task id="LOCAL-00001" summary="scanner -&gt; buffer">
       <created>1484752664982</created>
@@ -640,7 +640,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79195000" />
+    <option name="totallyTimeSpent" value="79261000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="24" width="1270" height="1056" extended-state="4" />
